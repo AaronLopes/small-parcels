@@ -49,14 +49,16 @@ requestXML = """
 docString = requestXML
 docString = docString.replace('\n','').replace('\t','')
 docString = urllib.parse.quote_plus(docString)
-
+#gives the url address created from the xml code
 url = "http://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
 print(url + "\n\n")
 
 
 f = requests.get(url)
+print(f)
+#prints the basic html structure of the response code
 '''
-
+#just a bunch of additional ways to try and connect to the url
 b_obj = BytesIO()
 crl = pycurl.Curl()
 
