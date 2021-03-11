@@ -50,7 +50,7 @@ docString = requestXML
 docString = docString.replace('\n','').replace('\t','')
 docString = urllib.parse.quote_plus(docString)
 #gives the url address created from the xml code
-url = "http://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
+url = "https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
 print(url + "\n\n")
 
 
@@ -72,7 +72,7 @@ crl.close()
 
 get_body = b_obj.getvalue()
 
-git@github.com:AaronLopes/small-parcels.git
+
 
 #possible error response
 response = requests.get(url).json()
