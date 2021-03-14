@@ -5,9 +5,11 @@ import xml.etree.ElementTree as ET
 import requests
 import pycurl
 from io import BytesIO
+from bs4 import BeautifulSoup
 usps_username = "850CREAT7421"
 usps_password = "827OY73NU544"
 
+Zip_origin = '22201'
 
 #this is the actual request structure for USPS's API
 requestXML = """
@@ -30,11 +32,11 @@ requestXML = """
 
 <Container></Container>
 
-<Width></Width>
+<Width>5</Width>
 
-<Length></Length>
+<Length>5</Length>
 
-<Height></Height>
+<Height>5</Height>
 
 <Girth></Girth>
 
@@ -49,14 +51,23 @@ requestXML = """
 docString = requestXML
 docString = docString.replace('\n','').replace('\t','')
 docString = urllib.parse.quote_plus(docString)
-#gives the url address created from the xml code
+
 url = "https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
-print(url + "\n\n")
+#print(url + "\n\n")
 
 
-f = requests.get(url)
-print(f)
-#prints the basic html structure of the response code
+response = requests.get(url)
+
+#print(response)
+
+#print(response.text)
+
+soup = BeautifulSoup(response.text, 'xml')
+
+price_string = soup.find('Price')
+price = float(price_string.text.strip())
+
+
 '''
 #just a bunch of additional ways to try and connect to the url
 b_obj = BytesIO()
