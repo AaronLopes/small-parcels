@@ -64,9 +64,9 @@ response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'xml')
 
-price_string = soup.find('Price')
+price_string = soup.find('Rate')
 price = float(price_string.text.strip())
-
+print(price)
 
 '''
 #just a bunch of additional ways to try and connect to the url
