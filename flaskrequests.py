@@ -5,7 +5,7 @@ Created on Fri Mar 19 17:07:14 2021
 @author: Chase Hubbard
 
 """
-#Example flask call using USPS API
+#Example flask call using USPS API This is not the best USPS API just is used as an example
 import requests
 # -*- coding: utf-8 -*-
 import urllib
