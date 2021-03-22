@@ -6,23 +6,36 @@ import requests
 import pycurl
 from io import BytesIO
 from bs4 import BeautifulSoup
-usps_username = "850CREAT7421"
-usps_password = "827OY73NU544"
+def USPS():
+    usps_username = "850CREAT7421"
+    usps_password = "827OY73NU544"
 
-Zip_origin = '22201'
+    Zip_origin = '22201'
 
+
+    Types_of_Orders = ['First Class','Priority','First Class Commercial','First Class'
+,'First Class Commercial','First Class HFP Commercial','Parcel Select Ground'
+,'Priority','Priority Commercial','Priority Cpp'
+,'Priority HFP Commercial','Priority HFP CPP','Priority Mail Express'
+,'Priority Mail Express Commercial','Priority Mail Express CPP','Priority Mail Express Sh','Priority Mail Express Sh Commercial'
+,'Priority Mail Express HFP','Priority Mail Express HFP Commercial','Priority Mail Express HFP CPP'
+,'Priority Mail Cubic','Retail Ground','Media','Library'
+,'All','Online','Plus','BPM'
+    ]
+
+    Tested = ['PRIORITY, PRIORITY MAIL EXPRESS,Parcel Select Ground,Media ']
+#priority is 3 day, priority mail express is 2 day, parcel select ground is longer,Media is slower unknown time but cheaper 
 #this is the actual request structure for USPS's API
-requestXML = """
-<?xml version="1.0"?>
+    requestXML = """
 <RateV4Request USERID="850CREAT7421">
 
 <Revision>2</Revision>
 
 <Package ID="0">
 
-<Service>PRIORITY</Service>
+<Service>ALL</Service>
 
-<ZipOrigination>22201</ZipOrigination>
+<ZipOrigination>30301</ZipOrigination>
 
 <ZipDestination>26301</ZipDestination>
 
@@ -32,11 +45,11 @@ requestXML = """
 
 <Container></Container>
 
-<Width>5</Width>
+<Width></Width>
 
-<Length>5</Length>
+<Length></Length>
 
-<Height>5</Height>
+<Height></Height>
 
 <Girth></Girth>
 
@@ -45,71 +58,41 @@ requestXML = """
 </Package>
 
 </RateV4Request>
-"""
+    """
 
 #convert XML to a webpage and then search the webpage using python
-docString = requestXML
-docString = docString.replace('\n','').replace('\t','')
-docString = urllib.parse.quote_plus(docString)
+    docString = requestXML
+    docString = docString.replace('\n','').replace('\t','')
+    docString = urllib.parse.quote_plus(docString)
 
-url = "https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
+    url = "https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
 #print(url + "\n\n")
 
-
-response = requests.get(url)
+    response = requests.get(url)
 
 #print(response)
 
 #print(response.text)
 
-soup = BeautifulSoup(response.text, 'xml')
+    soup = BeautifulSoup(response.text, 'xml')
+    price_string = soup.find('Rate')
+    prices = soup.find_all('Rate')
+    new_prices = []
+    real_service_types = []
+    sub_service_types = []
+    service_types = soup.find_all('MailService')
+    for x in range(len(service_types)):
+        sub_service_types.append(service_types[x].text.split('&'))
+    for x in range(len(sub_service_types)):
+            real_service_types.append(sub_service_types[x])
 
-price_string = soup.find('Rate')
-price = float(price_string.text.strip())
-print(price)
+    for x in range(len(prices)):
+        try:
+            testtuple = (float(prices[x].text.strip())), (real_service_types[x][0] + real_service_types[x][5][3:])
+        except:
+            testtuple = (float(prices[x].text.strip())), (real_service_types[x][0])
+        new_prices.append(testtuple)
+    return(new_prices)
 
-'''
-#just a bunch of additional ways to try and connect to the url
-b_obj = BytesIO()
-crl = pycurl.Curl()
-
-crl.setopt(crl.URL, url)
-
-crl.setopt(crl.WRITEDATA, b_obj)
-
-crl.perform()
-
-crl.close()
-
-get_body = b_obj.getvalue()
-
-
-
-#possible error response
-response = requests.get(url).json()
-print(response)
-if response.getcode() != 200:
-	print("Error making HTTP call:")
-	print(response.info())
-	exit()
-
-contents = response.read()
-print(contents)
-
-#root = ET.fromstring(contents)
-#for address in root.findall('Address'):
-#	print()
-#	print("Address1: " + address.find("Address1").text)
-#	print("Address2: " + address.find("Address2").text)
-#	print("City:	 " + address.find("City").text)
-#	print("State:	" + address.find("State").text)
-#	print("Zip5:	 " + address.find("Zip5").text)
-
-'''
-'''
-from usps import USPSApi
-from pprint import pprint as pp
-
-usps_username = "850CREAT7421"
-usps_password = "827OY73NU544"
-'''
+if __name__ == '__main__':
+    print(USPS())
