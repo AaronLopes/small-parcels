@@ -1,0 +1,10 @@
+Fedex API Info:
+
+Key:
+TE1f195EYkYmZ37f
+
+Test Account Number:
+510087780
+
+Test Meter Number:
+119208406
