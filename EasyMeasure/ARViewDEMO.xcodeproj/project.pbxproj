@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* ARViewDEMOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* ARViewDEMOAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
+		BD012B7813F69C0D00585047 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD012B7713F69C0D00585047 /* OpenGLES.framework */; };
+		BD32CC2D145C9677001171EE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD32CC2C145C9677001171EE /* CoreMedia.framework */; };
+		BD7D2B371BAD37A900C73F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7D2B361BAD37A900C73F8B /* Default-568h@2x.png */; };
+		BD83217A19F6E1FE007081D7 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = BD83217919F6E1FE007081D7 /* example.png */; };
+		BD96B69C145DF57A006666AA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD96B69B145DF579006666AA /* ImageIO.framework */; };
+		BD96B813172FA10D004278E7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD96B812172FA10D004278E7 /* MainViewController.m */; };
+		BD96B81D172FA2F2004278E7 /* libARView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD96B81C172FA2F2004278E7 /* libARView.a */; };
+		BD96B822172FA622004278E7 /* arrow_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = BD96B81F172FA622004278E7 /* arrow_middle.png */; };
+		BD96B823172FA622004278E7 /* movement.png in Resources */ = {isa = PBXBuildFile; fileRef = BD96B820172FA622004278E7 /* movement.png */; };
+		BD96B824172FA622004278E7 /* updown.png in Resources */ = {isa = PBXBuildFile; fileRef = BD96B821172FA622004278E7 /* updown.png */; };
+		BD9716A114F6DAD600633B89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9716A014F6DAD500633B89 /* Security.framework */; };
+		BD9BE53A16466DBF0097CEDF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9BE53916466DBF0097CEDF /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BD9D589C15821391004E3B1A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9D589B15821391004E3B1A /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BDA275821423D46B00E1069F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA275811423D46B00E1069F /* AVFoundation.framework */; };
+		BDA49BC814F85113009DE1E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7A6427140D7E2800B32031 /* SystemConfiguration.framework */; };
+		BDA49BC914F8521B009DE1E4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7E8DD91319067F004611D3 /* QuartzCore.framework */; };
+		BDA885AB1620979F00F39CB3 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA885AA1620979F00F39CB3 /* MainView.xib */; };
+		BDA885AD162097F600F39CB3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA885AC162097F600F39CB3 /* MainWindow.xib */; };
+		BDD6D3EE18E892BE006FF48D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD6D3ED18E892BE006FF48D /* CoreMotion.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		BDAE86D414F8FBD900EFBDA0 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.pnjhjh";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_NAME}",
+			);
+			script = "echo \"----------------------------------------------------------------\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\necho \"${INPUT_FILE_PATH}\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\necho \"${DERIVED_FILES_DIR}/${INPUT_FILE_NAME}\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\necho ${GCC_PREPROCESSOR_DEFINITIONS} >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\n\nBUILD=`echo ${GCC_PREPROCESSOR_DEFINITIONS} | grep -o DISTRIBUTION_BUILD`\n\necho $BUILD >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\n\nif [ \"${BUILD}\" == \"DISTRIBUTION_BUILD\" ]; then\necho \"COMPRESS\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\n\"${PROJECT_DIR}/pngout\" -y -q -force \"${INPUT_FILE_PATH}\" \"${DERIVED_FILES_DIR}/${INPUT_FILE_NAME}\"\nelse\necho \"COPY\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"\ncp -f \"${INPUT_FILE_PATH}\" \"${DERIVED_FILES_DIR}/${INPUT_FILE_NAME}\"\nfi\n\necho \"...done.\" >> \"${DERIVED_FILES_DIR}/pngout-log.txt\"";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* ARViewDEMOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewDEMOAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* ARViewDEMOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewDEMOAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* ARViewDEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARViewDEMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* ARViewDEMO_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewDEMO_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ARViewDEMO-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ARViewDEMO-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BD012B7713F69C0D00585047 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BD32CC2C145C9677001171EE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		BD7A6427140D7E2800B32031 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BD7D2B361BAD37A900C73F8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BD7E8DD91319067F004611D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BD83217919F6E1FE007081D7 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
+		BD96B69B145DF579006666AA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		BD96B811172FA10D004278E7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BD96B812172FA10D004278E7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BD96B81B172FA2F2004278E7 /* ARView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARView.h; sourceTree = "<group>"; };
+		BD96B81C172FA2F2004278E7 /* libARView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libARView.a; sourceTree = "<group>"; };
+		BD96B81F172FA622004278E7 /* arrow_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_middle.png; sourceTree = "<group>"; };
+		BD96B820172FA622004278E7 /* movement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movement.png; sourceTree = "<group>"; };
+		BD96B821172FA622004278E7 /* updown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updown.png; sourceTree = "<group>"; };
+		BD9716A014F6DAD500633B89 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BD9BE53916466DBF0097CEDF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		BD9D589B15821391004E3B1A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		BDA275811423D46B00E1069F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BDA885AA1620979F00F39CB3 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		BDA885AC162097F600F39CB3 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		BDD6D3ED18E892BE006FF48D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDD6D3EE18E892BE006FF48D /* CoreMotion.framework in Frameworks */,
+				BD9BE53A16466DBF0097CEDF /* CoreVideo.framework in Frameworks */,
+				BD9D589C15821391004E3B1A /* CoreFoundation.framework in Frameworks */,
+				BDA49BC914F8521B009DE1E4 /* QuartzCore.framework in Frameworks */,
+				BDA49BC814F85113009DE1E4 /* SystemConfiguration.framework in Frameworks */,
+				BD9716A114F6DAD600633B89 /* Security.framework in Frameworks */,
+				BD96B69C145DF57A006666AA /* ImageIO.framework in Frameworks */,
+				BD32CC2D145C9677001171EE /* CoreMedia.framework in Frameworks */,
+				BDA275821423D46B00E1069F /* AVFoundation.framework in Frameworks */,
+				BD012B7813F69C0D00585047 /* OpenGLES.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				BD96B81D172FA2F2004278E7 /* libARView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BD96B811172FA10D004278E7 /* MainViewController.h */,
+				BD96B812172FA10D004278E7 /* MainViewController.m */,
+				1D3623240D0F684500981E51 /* ARViewDEMOAppDelegate.h */,
+				1D3623250D0F684500981E51 /* ARViewDEMOAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* ARViewDEMO.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				BD7D2B361BAD37A900C73F8B /* Default-568h@2x.png */,
+				BD96B80C172FA0D7004278E7 /* ARView */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* ARViewDEMO_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD83217919F6E1FE007081D7 /* example.png */,
+				BD96B81F172FA622004278E7 /* arrow_middle.png */,
+				BD96B820172FA622004278E7 /* movement.png */,
+				BD96B821172FA622004278E7 /* updown.png */,
+				BDA885AA1620979F00F39CB3 /* MainView.xib */,
+				BDA885AC162097F600F39CB3 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* ARViewDEMO-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDD6D3ED18E892BE006FF48D /* CoreMotion.framework */,
+				BD9BE53916466DBF0097CEDF /* CoreVideo.framework */,
+				BD9D589B15821391004E3B1A /* CoreFoundation.framework */,
+				BD9716A014F6DAD500633B89 /* Security.framework */,
+				BD96B69B145DF579006666AA /* ImageIO.framework */,
+				BD32CC2C145C9677001171EE /* CoreMedia.framework */,
+				BDA275811423D46B00E1069F /* AVFoundation.framework */,
+				BD7A6427140D7E2800B32031 /* SystemConfiguration.framework */,
+				BD012B7713F69C0D00585047 /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+				BD7E8DD91319067F004611D3 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD96B80C172FA0D7004278E7 /* ARView */ = {
+			isa = PBXGroup;
+			children = (
+				BD96B81B172FA2F2004278E7 /* ARView.h */,
+				BD96B81C172FA2F2004278E7 /* libARView.a */,
+			);
+			path = ARView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* ARViewDEMO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ARViewDEMO" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+				BDAE86D414F8FBD900EFBDA0 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = ARViewDEMO;
+			productName = iDistance;
+			productReference = 1D6058910D05DD3D006BFB54 /* ARViewDEMO.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = KC697SNQ2X;
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ARViewDEMO" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+				nl,
+				pt,
+				it,
+				es,
+				fr,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* ARViewDEMO */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD83217A19F6E1FE007081D7 /* example.png in Resources */,
+				BDA885AB1620979F00F39CB3 /* MainView.xib in Resources */,
+				BDA885AD162097F600F39CB3 /* MainWindow.xib in Resources */,
+				BD96B822172FA622004278E7 /* arrow_middle.png in Resources */,
+				BD96B823172FA622004278E7 /* movement.png in Resources */,
+				BD7D2B371BAD37A900C73F8B /* Default-568h@2x.png in Resources */,
+				BD96B824172FA622004278E7 /* updown.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* ARViewDEMOAppDelegate.m in Sources */,
+				BD96B813172FA10D004278E7 /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ARViewDEMO_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				INFOPLIST_FILE = "ARViewDEMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ARView\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fobjc-arc",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ARViewDEMO;
+				PRODUCT_NAME = ARViewDEMO;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ARViewDEMO_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				INFOPLIST_FILE = "ARViewDEMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ARView\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fobjc-arc",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ARViewDEMO;
+				PRODUCT_NAME = ARViewDEMO;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		A340F61410F6909F00BB8E73 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Distribution;
+		};
+		A340F61510F6909F00BB8E73 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ARViewDEMO_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				INFOPLIST_FILE = "ARViewDEMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ARView\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fobjc-arc",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ARViewDEMO;
+				PRODUCT_NAME = ARViewDEMO;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "framework/Source/**";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ARViewDEMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				A340F61510F6909F00BB8E73 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ARViewDEMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				A340F61410F6909F00BB8E73 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
