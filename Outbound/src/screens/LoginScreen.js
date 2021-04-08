@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Heading } from '../components/Heading';
 import { Input } from '../components/Input';
 import { Paragraph } from '../components/Paragraph';
@@ -16,9 +16,11 @@ export default function LoginScreen({navigation}) {
 
       <Input style={styles.input} placeholder={'Email'} keyboardType={'email-address'}/>
       <Input style={styles.input} placeholder={'Password'} secureTextEntry/>
-      <FilledButton style={styles.signin} title={'Sign In'} onPress={() => {}}/>
+      <FilledButton style={styles.signin} title={'Sign In'} onPress={() => {
+        navigation.navigate('HomeStack', { screen: 'Measure' });
+      }}/>
       <FilledButton title={'Register'} onPress={() => {
-        navigation.navigate('Register');
+        navigation.navigate('AuthStack', { screen: 'Register' });
       }}/>
       <StatusBar style="auto" />
     </View>
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   title: {
-    marginBottom: 15
+    marginBottom: 15,
   },
   subtitle: {
       marginBottom: 50
