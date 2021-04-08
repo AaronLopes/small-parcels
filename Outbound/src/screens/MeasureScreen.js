@@ -10,7 +10,7 @@ export default function MeasureScreen({navigation}) {
   return (
     <View style={styles.container}>
         <Heading style={styles.title}>Measurements</Heading>
-        <FilledButton style={styles.signin} title={'Measure'} onPress={() => {}}/>
+        <RectButton style={styles.measure} title={'Add Item'} onPress={() => {}}/>
     </View>
   );
 }
@@ -24,5 +24,12 @@ const styles = StyleSheet.create({
     },
     title: {
       color: 'red',
+    },
+    measure: {
+      position: 'absolute',
+      height: 68,
+      top: 190,
+      //bottom: 83,
+      width: '80%'
     }
 })

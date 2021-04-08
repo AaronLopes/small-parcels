@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
-export function FilledButton({title, style, onPress}) {
+export function RectButton({title, style, onPress}) {
 
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
@@ -18,6 +18,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   text: {
     fontSize: 28,
