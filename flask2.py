@@ -168,7 +168,7 @@ def get_zipfrom():
 @app.route('/price/')
 def price():
     price_data = []
-    price_data.append(USPS(wieghts[0],lengths[0],heights[0],widths[0],zipto_locations[0],zipfrom_locations[0]))
+    price_data.append(USPS(weights[0],lengths[0],heights[0],widths[0],zipto_locations[0],zipfrom_locations[0]))
     return jsonify(price_data)
 
 
