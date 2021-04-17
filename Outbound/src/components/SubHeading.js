@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 
-export function Paragraph({ children, style, ...props }) {
+export function SubHeading({ children, style, ...props }) {
   return (
     <Text {...props} style={[styles.text, style]}>
       {children}
@@ -11,8 +11,9 @@ export function Paragraph({ children, style, ...props }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 16,
+    fontSize: 28,
     fontFamily: "System",
-    fontWeight: "400",
+    fontWeight: "500",
+    color: "#DF7E4D",
   },
 });

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Heading } from '../components/Heading';
 
 
-export default function MeasureScreen() {
+export default function SettingScreen() {
   return (
     <View style={styles.container}>
         <Heading style={styles.title}>Settings</Heading>

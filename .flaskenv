@@ -1,0 +1,2 @@
+FLASK_APP=rate_api.py
+FLASK_ENV=development
