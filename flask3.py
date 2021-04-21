@@ -186,7 +186,7 @@ def price_FedEx():
 @app.route('/price_UPS/')
 def price_UPS():
     price_data_UPS = []
-    y = UPS(height[0],length[0],width[0],weight[0],zipto[0],stateto[0],zipfrom[0],statefrom[0])
+    y = UPS(heights[0],lengths[0],widths[0],weights[0],zipto[0],stateto[0],zipfrom[0],statefrom[0])
     for count in range(len(y)):
         price_data_UPS.append(y[count][1])
     return jsonify(min(price_data_UPS))
