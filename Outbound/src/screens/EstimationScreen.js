@@ -45,7 +45,7 @@ export default function EstimationScreen({ navigation }) {
         </View>
         <Paragraph>Measurement Title</Paragraph>
         <View style={styles.titleContainer}>
-          <Input style={styles.titleInput} defaultValue={"Gift Box"}></Input>
+          <Input style={styles.titleInput} defaultValue={"Small Box"}></Input>
         </View>
         <FilledButton
           style={styles.nextButton}

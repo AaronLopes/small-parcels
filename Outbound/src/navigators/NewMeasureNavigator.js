@@ -4,6 +4,7 @@ import CameraMeasureScreen from "../screens/CameraMeasureScreen";
 import NewOrderScreen from "../screens/NewOrderScreen";
 import EstimationScreen from "../screens/EstimationScreen";
 import CheckoutScreen from "../screens/CheckoutScreen";
+import RateScreen from "../screens/RatesScreen";
 
 const NewMeasureStack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function NewMeasureNavigator() {
     >
       <NewMeasureStack.Screen name={"Camera"} component={CameraMeasureScreen} />
       <NewMeasureStack.Screen name={"NewOrder"} component={NewOrderScreen} />
+      <NewMeasureStack.Screen name={"Rates"} component={RateScreen} />
       <NewMeasureStack.Screen
         name={"Estimation"}
         component={EstimationScreen}

@@ -1,9 +1,9 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from flask import Flask, request, jsonify, Blueprint
 from flask_restful import Api, Resource, reqparse, abort
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_cors import CORS, cross_origin
+from FedExAPI3 import FedExAPI
+# from UPSAPI import UPS
 import urllib
 import requests
 import xml.etree.ElementTree as ET
@@ -11,26 +11,18 @@ import requests
 import pycurl
 from io import BytesIO
 from bs4 import BeautifulSoup
+def USPS(weight,width,length,height,zipto,zipfrom):
+    usps_username = "850CREAT7421"
+    usps_password = "827OY73NU544"
+
+    Zip_origin = '30332'
 
 
-def USPS(
-    weight,
-    width,
-    length,
-    height,
-    zipto,
-    zipfrom,
-    ):
-    usps_username = '850CREAT7421'
-    usps_password = '827OY73NU544'
 
-    Zip_origin = '22201'
 
-# priority is 3 day, priority mail express is 2 day, parcel select ground is longer,Media is slower unknown time but cheaper
-# this is the actual request structure for USPS's API
-
-    requestXML = \
-        """
+#priority is 3 day, priority mail express is 2 day, parcel select ground is longer,Media is slower unknown time but cheaper
+#this is the actual request structure for USPS's API
+    requestXML = """
 <RateV4Request USERID="850CREAT7421">
 <Revision>2</Revision>
 <Package ID="0">
@@ -49,9 +41,9 @@ def USPS(
 </RateV4Request>
     """
 
-# convert XML to a webpage and then search the webpage using python
+#convert XML to a webpage and then search the webpage using python
 
-    docString = BeautifulSoup(requestXML, 'xml')
+    docString = BeautifulSoup(requestXML,'xml')
     docString.Pounds.string = weight
     docString.Width.string = width
     docString.Length.string = length
@@ -59,21 +51,19 @@ def USPS(
     docString.ZipOrigination.string = zipfrom
     docString.ZipDestination.string = zipto
     docString = str(docString)
-    docString = docString.replace('\n', '').replace('\t', '')
+    docString = docString.replace('\n','').replace('\t','')
     docString = urllib.parse.quote_plus(docString)
-    print(docString)
 
-    url = \
-        'https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=' \
-        + docString
 
-# print(url + "\n\n")
+
+    url = "https://secure.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=" + docString
+#print(url + "\n\n")
 
     response = requests.get(url)
 
-# print(response)
+#print(response)
 
-# print(response.text)
+#print(response.text)
 
     soup = BeautifulSoup(response.text, 'xml')
     price_string = soup.find('Rate')
@@ -85,26 +75,22 @@ def USPS(
     for x in range(len(service_types)):
         sub_service_types.append(service_types[x].text.split('&'))
     for x in range(len(sub_service_types)):
-        real_service_types.append(sub_service_types[x])
+            real_service_types.append(sub_service_types[x])
 
     for x in range(len(prices)):
         try:
-            testtuple = (float(prices[x].text.strip()),
-                         real_service_types[x][0]
-                         + (real_service_types[x][5])[3:])
+            testtuple = (float(prices[x].text.strip())), (real_service_types[x][0] + real_service_types[x][5][3:])
         except:
-            testtuple = (float(prices[x].text.strip()),
-                         real_service_types[x][0])
+            testtuple = (float(prices[x].text.strip())), (real_service_types[x][0])
         new_prices.append(testtuple)
-    return new_prices
+    return(new_prices)
 
 
-def create_app():
-    app = Flask(__name__)
-    return app
 
 
-app = create_app()
+
+app = Flask(__name__)
+CORS(app)
 
 weights = []
 heights = []
@@ -112,14 +98,14 @@ lengths = []
 zipto_locations = []
 zipfrom_locations = []
 widths = []
-
+stateto = []
+statefrom = []
 
 @app.route('/store_weight/<weight>')
 def find_weight(weight):
     weights = []
     weights.append(weight)
     return jsonify(weights)
-
 
 @app.route('/get_weight/')
 def get_weight():
@@ -132,11 +118,9 @@ def find_height(height):
     heights.append(height)
     return jsonify(heights)
 
-
 @app.route('/get_height/')
 def get_height():
     return jsonify(heights)
-
 
 @app.route('/store_length/<length>')
 def find_length(length):
@@ -144,11 +128,9 @@ def find_length(length):
     lengths.append(length)
     return jsonify(lengths)
 
-
 @app.route('/get_length/')
 def get_length():
     return jsonify(lengths)
-
 
 @app.route('/store_width/<width>')
 def find_width(width):
@@ -156,48 +138,57 @@ def find_width(width):
     widths.append(width)
     return jsonify(widths)
 
-
 @app.route('/get_width/')
 def get_width():
     return jsonify(widths)
 
-
 @app.route('/store_zipto/<zipto>')
+@cross_origin()
 def find_zipto(zipto):
     zipto_locations = []
     zipto_locations.append(zipto)
     return jsonify(zipto_locations)
 
-
 @app.route('/get_zipto/')
 def get_zipto():
     return jsonify(zipto_locations)
 
-
 @app.route('/store_zipfrom/<zipfrom>')
 def find_zipfrom(zipfrom):
-    zipfrom_locations = []
+    zipfrom_locations =[]
     zipfrom_locations.append(zipfrom)
     return jsonify(zipfrom_locations)
-
 
 @app.route('/get_zipfrom/')
 def get_zipfrom():
     return jsonify(zipfrom_locations)
 
+@app.route('/price_USPS/<zipto>')
+def price_USPS(zipto):
+    price_data_USPS = []
+    price_data_USPS.append(USPS("18.2","5","10","5",zipto,"30332"))
+    return jsonify(price_data_USPS[0][0])
 
-@app.route('/price')
-def price():
-    price_data = []
-    price_data.append(USPS(
-        '18',
-        '5',
-        '10',
-        '5',
-        '95014',
-        '30318',
-        ))
-    return jsonify(price_data)
+
+@app.route('/price_FedEx/<zipto>')
+def price_FedEx(zipto):
+    price_data_FEDEX = []
+    state = "CA"
+    if zipto == "10001":
+      state = "NY"
+    x = FedExAPI("18.2",zipto, state,"30332","GA")
+    for count in range(len(x)):
+        price_data_FEDEX.append(x[count][0])
+    return jsonify(min(price_data_FEDEX))
+
+
+@app.route('/price_UPS/<zipto>')
+def price_UPS(zipto):
+    price_data_UPS = []
+    y = UPS("5","10","5","18.2",zipto,"CA","30332","GA")
+    for count in range(len(y)):
+        price_data_UPS.append(y[count][1])
+    return jsonify(min(price_data_UPS))
 
 if __name__ == '__main__':
-    app.run(host="128.61.43.138", port=19000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

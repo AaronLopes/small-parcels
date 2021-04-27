@@ -6,7 +6,8 @@ import { Input } from "../components/Input";
 import { Paragraph } from "../components/Paragraph";
 import { SubHeading } from "../components/SubHeading";
 
-export default function CheckoutScreen({ navigation }) {
+export default function CheckoutScreen({ navigation, route }) {
+  const { fromZ, toZ, rate } = route.params;
   return (
     <View style={styles.container}>
       <Heading style={styles.title}>Checkout</Heading>
@@ -14,8 +15,7 @@ export default function CheckoutScreen({ navigation }) {
       <View style={styles.checkoutBox}>
         <Paragraph style={styles.content}>Carrier: USPS</Paragraph>
         <Paragraph style={styles.content}>Expected: Tues, April 20</Paragraph>
-        <Paragraph style={styles.content}>Refund Rate: $20</Paragraph>
-        <Paragraph style={styles.total}>Total: $33.60</Paragraph>
+        <Paragraph style={styles.total}>Total: ${rate}</Paragraph>
       </View>
       <SubHeading style={styles.subtitle}>Payment</SubHeading>
       <Paragraph style={styles.payment}>

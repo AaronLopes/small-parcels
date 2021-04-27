@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Modal from "react-native-modal";
 import { Camera, Permissions } from "expo";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Heading } from "../components/Heading";
 import { RectButton } from "../components/RectButton";
 import { MeasurementCard } from "../components/MeasurementCard";
+import { RateCard } from "../components/RateCard";
 
 export default function MeasureScreen({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(false);
