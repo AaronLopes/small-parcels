@@ -172,7 +172,7 @@ def price_USPS():
     z = USPS(weights[0],lengths[0],heights[0],widths[0],zipto_locations[0],zipfrom_locations[0])
     for count in range(len(z)):
         price_data_USPS.append(z[count][0])
-    return jsonify(price_data_USPS[0][0])
+    return jsonify(min(price_data_USPS))
 
 
 @app.route('/price_FedEx/')
