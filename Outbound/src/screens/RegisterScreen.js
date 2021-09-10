@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Heading } from '../components/Heading';
 import { Input } from '../components/Input';
-import { Paragraph } from '../components/Paragraph';
 import { FilledButton } from '../components/FilledButton';
 
 export default function RegisterScreen() {
@@ -16,7 +15,9 @@ export default function RegisterScreen() {
       <Input style={styles.input} placeholder={'Phone Number'} secureTextEntry/>
       <Input style={styles.input} placeholder={'Password'} secureTextEntry/>
       <Input style={styles.input} placeholder={'Confirm Password'} secureTextEntry/>
-      <FilledButton style={styles.signin} title={'Register'} onPress={() => {}}/>
+      <FilledButton style={styles.signin} title={'Register'} onPress={() => {
+        
+      }}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 100,
     alignItems: 'center'
-    //alignItems: 'center',
+    //alignItems: 'center',``
     //justifyContent: 'center',
   },
   title: {

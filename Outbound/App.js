@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AuthStackNavigator from './src/navigators/AuthStackNavigator';
 import HomeStackNavigator from './src/navigators/HomeStackNavigator';
+import 'semantic-ui-css/semantic.min.css'
 
 const RootStack = createStackNavigator();
 
